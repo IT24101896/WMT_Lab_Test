@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function ItemForm({ initialValues, onSubmit, submitText }) {
+  // 1. Added serialNumber to the initial state object
   const [formData, setFormData] = useState(
     initialValues || {
       name: "",
@@ -8,6 +9,7 @@ function ItemForm({ initialValues, onSubmit, submitText }) {
       price: "",
       description: "",
       imageUrl: "",
+      serialNumber: "", // New field added here
     }
   );
 
@@ -20,7 +22,7 @@ function ItemForm({ initialValues, onSubmit, submitText }) {
     e.preventDefault();
     onSubmit({
       ...formData,
-      price: Number(formData.price),
+      price: Number(formData.price), // Keeps price as a number for the API
     });
   };
 
@@ -30,6 +32,16 @@ function ItemForm({ initialValues, onSubmit, submitText }) {
 
       <label>Item Name</label>
       <input name="name" value={formData.name} onChange={handleChange} required />
+
+      {/* --- NEW SERIAL NUMBER FIELD --- */}
+      <label>Serial Number</label>
+      <input 
+        name="serialNumber" 
+        value={formData.serialNumber} 
+        onChange={handleChange} 
+        required 
+      />
+      {/* ------------------------------- */}
 
       <label>Category</label>
       <input name="category" value={formData.category} onChange={handleChange} required />

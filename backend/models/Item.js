@@ -7,6 +7,14 @@ const itemSchema = new mongoose.Schema(
       required: [true, "Item name is required"],
       trim: true,
     },
+    // --- NEW SERIAL NUMBER FIELD ---
+    serialNumber: {
+      type: String,
+      required: [true, "Serial Number is required"],
+      unique: true, // Optional: keeps serial numbers from being duplicated
+      trim: true,
+    },
+    // -------------------------------
     category: {
       type: String,
       required: [true, "Category is required"],
